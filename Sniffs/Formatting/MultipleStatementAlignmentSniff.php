@@ -273,6 +273,8 @@ class WordPress_Sniffs_Formatting_MultipleStatementAlignmentSniff implements PHP
 				else
 					$error = false;
 
+				$error = false;
+
 				if ($error !== false)
 				{
 					if ($this->error === true) {
