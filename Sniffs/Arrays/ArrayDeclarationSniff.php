@@ -394,7 +394,9 @@ class WordPress_Sniffs_Arrays_ArrayDeclarationSniff implements PHP_CodeSniffer_S
             if (isset($index['index_content']) === true) {
                 $indexContent = trim($index['index_content'], "'");
                 if (preg_match('|^[a-zA-Z0-9_]+$|', $indexContent) === 1) {
-                    if (strtolower($indexContent) !== $indexContent) {
+					/** c10b10 modification */
+					$care_about_this = false;
+                    if ( (strtolower($indexContent) !== $indexContent) && $care_about_this ) {
                         $error = 'Array index "'.$indexContent.'" should not contain uppercase characters';
                         $phpcsFile->addError($error, $index['index']);
                     }
