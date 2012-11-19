@@ -332,7 +332,8 @@ class WordPress_Sniffs_Arrays_ArrayDeclarationSniff implements PHP_CodeSniffer_S
             $lastIndex = $indices[($count - 1)]['value'];
 
             $trailingContent = $phpcsFile->findPrevious(T_WHITESPACE, ($arrayEnd - 1), $lastIndex, true);
-            if ($tokens[$trailingContent]['code'] !== T_COMMA) {
+			/** c10b10 */
+            if (0 && $tokens[$trailingContent]['code'] !== T_COMMA) {
                 $error = 'Comma required after last value in array declaration';
                 $phpcsFile->addError($error, $trailingContent);
             }
