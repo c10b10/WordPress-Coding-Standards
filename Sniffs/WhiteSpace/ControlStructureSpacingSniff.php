@@ -102,7 +102,8 @@ class WordPress_Sniffs_WhiteSpace_ControlStructureSpacingSniff implements PHP_Co
 			
 			$arrayLine = $tokens[$scopeOpener]['line'];
 
-			if (isset ($tokens[$arrayLine]['scope_opener']) && $tokens[$arrayLine]['line'] != $tokens[$tokens[$arrayLine]['scope_opener']]['line']) {
+			/** =c10b10 */
+			if (0 && isset ($tokens[$arrayLine]['scope_opener']) && $tokens[$arrayLine]['line'] != $tokens[$tokens[$arrayLine]['scope_opener']]['line']) {
 				$error = 'Opening brace should be on the same line as the declaration';
 				$phpcsFile->addError($error, $openBracket);
 				return;
