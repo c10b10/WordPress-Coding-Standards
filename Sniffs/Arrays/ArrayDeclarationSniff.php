@@ -102,7 +102,7 @@ class WordPress_Sniffs_Arrays_ArrayDeclarationSniff implements PHP_CodeSniffer_S
                 $phpcsFile->addError($error, $closer);
             }
         }
-		
+
             // Single line array.
             // Check if there are multiple values. If so, then it has to be multiple lines
             // unless it is contained inside a function call or condition.
@@ -307,9 +307,8 @@ class WordPress_Sniffs_Arrays_ArrayDeclarationSniff implements PHP_CodeSniffer_S
             }
         }
 
-		$singleValue = false;
-
-        if ($singleValue === true) {
+		/** c10b10 */
+        if (0 && ($singleValue === true)) {
             // Array cannot be empty, so this is a multi-line array with
             // a single value. It should be defined on single line.
             $error = 'Multi-line array contains a single value; use single-line array instead';
@@ -396,9 +395,8 @@ class WordPress_Sniffs_Arrays_ArrayDeclarationSniff implements PHP_CodeSniffer_S
             if (isset($index['index_content']) === true) {
                 $indexContent = trim($index['index_content'], "'");
                 if (preg_match('|^[a-zA-Z0-9_]+$|', $indexContent) === 1) {
-					/** c10b10 modification */
-					$care_about_this = false;
-                    if ( (strtolower($indexContent) !== $indexContent) && $care_about_this ) {
+					/** c10b10 */
+                    if (0 && (strtolower($indexContent) !== $indexContent)) {
                         $error = 'Array index "'.$indexContent.'" should not contain uppercase characters';
                         $phpcsFile->addError($error, $index['index']);
                     }
@@ -432,7 +430,13 @@ class WordPress_Sniffs_Arrays_ArrayDeclarationSniff implements PHP_CodeSniffer_S
 */
             // Check each line ends in a comma.
             if ($tokens[$index['value']]['code'] !== T_ARRAY) {
+				/**
+				 * c10b10: previous version was commented bellow. 
+				 * FIX: Ignores open paranthesis from ending comma rule.
+				 */
                 $nextComma = $phpcsFile->findNext(array(T_COMMA, T_OPEN_PARENTHESIS), ($index['value'] + 1));
+                // $nextComma = $phpcsFile->findNext(array(T_COMMA), ($index['value'] + 1));
+
 				/** c10b10 */
                 if (0 && (($nextComma === false) || ($tokens[$nextComma]['line'] !== $tokens[$index['value']]['line']))) {
                     $error = 'Each line in an array declaration must end in a comma';

@@ -69,7 +69,7 @@ class WordPress_Sniffs_Objects_ObjectInstantiationSniff implements PHP_CodeSniff
 						  T_RETURN
                          );
 
-		/** c10b10 change. */
+		/** c10b10 */
         if (0 &&in_array($tokens[$prev]['code'], $allowedTokens) === false) {
             $error = 'New objects must be assigned to a variable';
             $phpcsFile->addError($error, $stackPtr);
