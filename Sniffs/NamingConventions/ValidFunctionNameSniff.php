@@ -109,7 +109,8 @@ class WordPress_Sniffs_NamingConventions_ValidFunctionNameSniff extends PEAR_Sni
             $testMethodName = substr($methodName, 1);
         }
 
-		if (strtolower($testMethodName) != $testMethodName) {
+		/** c10b10 Ignore PHPUnit setUp and tearDown */
+		if ( (strtolower($testMethodName) != $testMethodName) && ! in_array( $methodName, array( 'setUp', 'tearDown' ) ) ) {
 			$suggested = preg_replace('/([A-Z])/', '_$1', $methodName);
 			$suggested = strtolower ($suggested);
 			$suggested = str_replace ('__', '_', $suggested);
