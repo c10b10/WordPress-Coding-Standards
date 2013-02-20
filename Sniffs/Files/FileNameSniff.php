@@ -57,7 +57,8 @@ class WordPress_Sniffs_Files_FileNameSniff implements PHP_CodeSniffer_Sniff
         }
 
         $fileName  = basename($phpcsFile->getFileName());
-        if (strpos($fileName, '_') !== false) {
+		/** c10b10. Allow files that start with underscore. */
+        if ((strpos($fileName, '_') !== false) && (strpos($fileName, '_') !== 0) ) {
 				$expected = str_replace('_', '-', $fileName);
                 $error = ucfirst('Filename "'.$fileName.'" with underscores found; use '.$expected.' instead');
                 $phpcsFile->addError($error, $stackPtr);
