@@ -346,7 +346,10 @@ class WordPress_Sniffs_WhiteSpace_ScopeIndentSniff implements PHP_CodeSniffer_Sn
 					// is not technically inside the function yet, so the indent
 					// is always off by one. So instead, use the
 					// indent of the closure as the base value.
-					$indent = ($tokens[$id]['column'] - 1);
+
+					/** =c10b10 Fix closures seizures. */
+					$indent++;
+					/* $indent = ($tokens[$id]['column'] - 1); */
 				}
 
 				$indent += $this->indent;
