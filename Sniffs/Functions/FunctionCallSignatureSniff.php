@@ -93,7 +93,8 @@ class WordPress_Sniffs_Functions_FunctionCallSignatureSniff implements PHP_CodeS
         if ($tokens[$openBracket]['line'] === $tokens[$closeBracket]['line']) {
             $this->processSingleLineCall($phpcsFile, $stackPtr, $openBracket, $tokens);
         } else {
-            $this->processMultiLineCall($phpcsFile, $stackPtr, $openBracket, $tokens);
+			/** =c10b10 Remove multiline alert. */
+            /* $this->processMultiLineCall($phpcsFile, $stackPtr, $openBracket, $tokens); */
         }
 
     }//end process()
