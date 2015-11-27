@@ -70,3 +70,4 @@ Remember that you can see where pear is looking for stuff, and putting things, b
 [Urban Giraffe]: http://urbangiraffe.com/articles/wordpress-codesniffer-standard/
 [fully annotated example to build upon]: http://pear.php.net/manual/en/package.php.php-codesniffer.annotated-ruleset.php
  
+ 
